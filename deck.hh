@@ -21,7 +21,11 @@ class Card {
         int value;
     public:
         Card(string csuit, string crank, int cvalue);   //constructor
-        void print_card(void);  //print card
+        string get_suit(void);
+        string get_rank(void);
+        int get_value(void);
+        void print_card_value(void);  //print card
+        void print_card_graphic(void);
 };
 
 /**

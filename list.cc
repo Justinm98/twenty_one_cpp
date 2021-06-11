@@ -65,6 +65,42 @@ T List<T>::pop_front() {
 }
 
 /**
+ * returns the beginning node of the list to allow for iteration
+ * 
+ * @RETUNS:
+ *  returns beginning node of list
+ */ 
+template <typename T>
+Node<T>* List<T>::list_begin() {
+    if(head->next != NULL){
+        Node<T>* first_node = head->next;
+        return first_node;
+    }
+    else {
+        return NULL;
+    }
+}
+
+/**
+ * returns the next node in the list based on given node
+ * 
+ * @PARAM:
+ *  node to get the next pointer from
+ * @RETUNS:
+ *  returns next node in list
+ */ 
+template <typename T>
+Node<T>* List<T>::list_next(Node<T>* node) {
+    if(node->next != NULL){
+        Node<T>* next_node = node->next;
+        return next_node;
+    }
+    else {
+        return NULL;
+    }
+}
+
+/**
  * checks if list is empty using size variable
  */ 
 template <typename T>

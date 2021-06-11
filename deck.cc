@@ -30,15 +30,87 @@ Card::Card(string csuit, string crank, int cvalue){
 }
 
 /**
+ * returns the card's suit
+ */ 
+string Card::get_suit(){
+    return suit;
+}
+
+/**
+ * returns the card's rank
+ */ 
+string Card::get_rank(){
+    return rank;
+}
+
+/**
+ * returns the card's value
+ */ 
+int Card::get_value(){
+    return value;
+}
+
+/**
  * prints info statement about card in the format
  * 
  * <rank> of <suit>'s 
  * Value: <value>
  */ 
-void Card::print_card(){
+void Card::print_card_value(){
     string card_value = to_string(value);
     string name = rank + " of " + suit + "'s\nValue: " + card_value + "\n";
     cout << name;
+}
+
+/**
+ * print out card as ascii graphic
+ */ 
+void Card::print_card_graphic(){
+    
+    if(rank.length() > 1){
+        cout << ".--------." << "\n";
+        cout << "|" << rank << ".--.  |" << "\n";
+        if(suit == "Heart"){
+            cout << "|  (\\/)  |" << "\n";
+            cout << "|  :\\/:  |" << "\n";
+        }
+        else if(suit == "Diamond"){
+            cout << "|  :/\\:  |" << "\n";
+            cout << "|  :\\/:  |" << "\n";
+        }
+        else if(suit == "Spade"){
+            cout << "|  :/\\:  |" << "\n";
+            cout << "|  (__)  |" << "\n";
+        }
+        else if(suit == "Club"){
+            cout << "|  :():  |" << "\n";
+            cout << "|  ()()  |" << "\n";
+        }
+        cout << "|  '--'" << rank << "|" << "\n";
+        cout << "`--------'" << "\n";
+    }
+    else {
+        cout << ".------." << "\n";
+        cout << "|" << rank << ".--. |" << "\n";
+        if(suit == "Heart"){
+            cout << "| (\\/) |" << "\n";
+            cout << "| :\\/: |" << "\n";
+        }
+        else if(suit == "Diamond"){
+            cout << "| :/\\: |" << "\n";
+            cout << "| :\\/: |" << "\n";
+        }
+        else if(suit == "Spade"){
+            cout << "| :/\\: |" << "\n";
+            cout << "| (__) |" << "\n";
+        }
+        else if(suit == "Club"){
+            cout << "| :(): |" << "\n";
+            cout << "| ()() |" << "\n";
+        }
+        cout << "| '--'" << rank << "|" << "\n";
+        cout << "`------'" << "\n";
+    }
 }
 
 /**
@@ -66,7 +138,7 @@ void Deck::make_new_deck(){
 
     //card attributes
     string suit[4] = {"Heart", "Diamond", "Spade", "Club"};
-    string rank[13] = {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
+    string rank[13] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
     
     Card* temp_deck[52]; // temp array to hold newly made cards
     

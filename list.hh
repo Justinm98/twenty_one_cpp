@@ -35,6 +35,8 @@ class List {
         List(); //default constructor
         ~List();
         void push_front(T new_value);    //push node to the front of list
+        Node<T>* list_begin(void);    //push node to the front of list
+        Node<T>* list_next(Node<T>* node);    //push node to the front of list
         T pop_front();  //pops node off the front of the list
         bool is_empty(); //checks if list is empty
 };
