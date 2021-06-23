@@ -56,12 +56,16 @@ void List<T>::push_front(T new_value) {
  */ 
 template <typename T>
 T List<T>::pop_front() {
-    Node<T>* temp = head->next;
-    head->next = temp->next;
-    size--;
-    T value = temp->value;
-    delete temp;
-    return value;
+    if(size > 0){
+        Node<T>* temp = head->next;
+        head->next = temp->next;
+        size--;
+        T value = temp->value;
+        delete temp;
+        return value;
+    }
+    
+    return NULL;
 }
 
 /**
