@@ -1,9 +1,10 @@
 /**
- * @Author: Justin Maloney
+ * @author: Justin Maloney
  * @version: 05-26-21
  */
 
 #include <iostream>
+#include <optional>
 using namespace std;
 
 #include "list.hh"
@@ -26,12 +27,16 @@ template <typename T>
 List<T>::~List(){
     if(!is_empty()){
         while(!is_empty()){
-            Card* card = pop_front();
-            delete card;
+            pop_front();
         }
     }
     
     delete head;
+}
+
+template <typename T>
+int List<T>::get_size(){
+    return size;
 }
 
 /**
@@ -51,21 +56,19 @@ void List<T>::push_front(T new_value) {
 /**
  * pops node off the front of the list
  * 
+ * @PRE:
+ *      list is not empty
  * @RETURNS:
  *  returns node value
  */ 
 template <typename T>
 T List<T>::pop_front() {
-    if(size > 0){
-        Node<T>* temp = head->next;
-        head->next = temp->next;
-        size--;
-        T value = temp->value;
-        delete temp;
-        return value;
-    }
-    
-    return NULL;
+    Node<T>* temp = head->next;
+    head->next = temp->next;
+    size--;
+    T value = temp->value;
+    delete temp;
+    return value;
 }
 
 /**
@@ -111,6 +114,9 @@ template <typename T>
 bool List<T>::is_empty(){
     return size == 0;
 }
+
+//list class declaration to support int for testing
+template class List<int>;
 
 //list class declaration to support Card* objects
 template class List<Card*>;

@@ -1,5 +1,5 @@
 /**
- * @Author: Justin Maloney
+ * @author: Justin Maloney
  * @version: 05-26-21
  */
 
@@ -34,6 +34,7 @@ class List {
     public:
         List(); //default constructor
         ~List();
+        int get_size(); //get size of list
         void push_front(T new_value);    //push node to the front of list
         Node<T>* list_begin(void);    //push node to the front of list
         Node<T>* list_next(Node<T>* node);    //push node to the front of list

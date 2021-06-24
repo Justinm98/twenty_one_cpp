@@ -6,9 +6,13 @@ TARGET = twenty_one
 
 FILES = deck.cc deck.hh list.cc list.hh
 
-CLANG = clang++ -fsanitize=address -g
+TESTTARGET = twenty_one_unit_testing
 
-CTARGET = twenty-one-clang
+TESTFILES = test_helper.cc test_helper.hh test_twenty_one.cc test_list.cc test_deck.cc test_runner.cc
+
+CLANG = clang++ -fsanitize=address -g -Wall
+
+CTARGET = twenty_one_clang
 
 CLANGFILES = deck.cc list.cc
 
@@ -21,4 +25,7 @@ clean:
 	$(RM) $(TARGET)
 
 clang:
-	$(CLANG) -fsanitize=address -g -Wall $(TARGET).cc $(FILES) 
+	$(CLANG) $(TARGET).cc $(FILES) 
+
+test:
+	$(CC) $(CFLAGS) -o $(TESTTARGET) $(FILES) $(TESTFILES)

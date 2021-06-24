@@ -1,5 +1,5 @@
 /**
- * @Author: Justin Maloney
+ * @author: Justin Maloney
  * @version: 05-26-21
  */
 
@@ -21,6 +21,7 @@ class Card {
         int value;
     public:
         Card(string csuit, string crank, int cvalue);   //constructor
+        ~Card();   //destructor
         string get_suit(void);
         string get_rank(void);
         int get_value(void);

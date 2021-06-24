@@ -1,5 +1,5 @@
 /**
- * @Author: Justin Maloney
+ * @author: Justin Maloney
  * @version: 05-26-21
  */
 
@@ -28,6 +28,11 @@ Card::Card(string csuit, string crank, int cvalue){
     rank = crank;
     value = cvalue;
 }
+
+/**
+ * card destructor
+ */ 
+Card::~Card(){}
 
 /**
  * returns the card's suit
@@ -124,7 +129,10 @@ Deck::Deck(){
  * Deck destructor
  */ 
 Deck::~Deck(){
-    //TODO
+    while(!card_deck.is_empty()){
+        Card *card = card_deck.pop_front();
+        delete card;
+    }
 }
 
 /**

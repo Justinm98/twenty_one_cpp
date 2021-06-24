@@ -1,6 +1,6 @@
 /**
- * @Author: Justin Maloney
- * @version: 05-26-21
+ * @author: Justin Maloney
+ * @version: 06-23-21
  */
 
 #include <iostream>
@@ -27,6 +27,7 @@ static List<Card*> dealer_hand;
  *      returns integer that corresponds to the answer picked
  */
 int prompt_user(string prompt_to_display, string options[], int num_of_options){
+    
     int answer;
     while(true){
         cout << prompt_to_display << endl;
@@ -139,6 +140,7 @@ int get_total_player_hand(){
         else {
             total += card->get_value();
         }
+        delete card;
         card = player_hand.pop_front();
     }
     
@@ -163,6 +165,7 @@ int get_total_dealer_hand(){
         else{
             total += card->get_value();
         }
+        delete card;
         card = dealer_hand.pop_front();
     }
 
@@ -219,7 +222,7 @@ void start_main_game_loop(){
         print_player_hand();
 
         string options[2] = {"hit", "hold"};
-        int answer = prompt_user("Do you want to hit or hold?", options, 2);
+        int answer = prompt_user("", options, 2);
 
         if(answer == 1){
             Card *card = deck.deal_card();
