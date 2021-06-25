@@ -115,21 +115,13 @@ void print_dealer_hand(){
  */ 
 int get_total_player_hand(){
     int total = 0;
-    Card* card = player_hand.pop_front();
-    while(card != NULL){
+    int list_size = player_hand.get_size();
+    for(int i = 0; i < list_size; i++){
+        Card* card = player_hand.pop_front();
         if(card->get_rank() == "A"){
-            int answer;
-            while(true){
-                cout << "What value should your Ace count as?\n1 - 1\n2 - 11\n";
-                cin >> answer;
-                if(answer == 1 || answer == 2){
-                    break;
-                }
-                else{
-                    cout << "invalid input try again\n";
-                }
-            }
-
+            string options[2] = {"1", "11"};
+            int answer = prompt_user("What value should your Ace count as?", options, 2);
+            
             if(answer == 1){
                 total += 1;
             }
@@ -140,8 +132,8 @@ int get_total_player_hand(){
         else {
             total += card->get_value();
         }
+
         delete card;
-        card = player_hand.pop_front();
     }
     
     cout << username << ", your hand total is - " << total << "\n";
@@ -157,8 +149,9 @@ int get_total_player_hand(){
 int get_total_dealer_hand(){
     int total = 0;
     int number_of_aces = 0;
-    Card* card = dealer_hand.pop_front();
-    while(card != NULL){
+    int list_size = dealer_hand.get_size();
+    for(int i = 0; i < list_size; i++){
+        Card* card = dealer_hand.pop_front();
         if(card->get_rank() == "A"){
             number_of_aces++;
         }
@@ -166,7 +159,6 @@ int get_total_dealer_hand(){
             total += card->get_value();
         }
         delete card;
-        card = dealer_hand.pop_front();
     }
 
     for(int i = 0; i < number_of_aces; i++){
@@ -193,7 +185,7 @@ int get_total_dealer_hand(){
  */ 
 void check_win_condition(int player_total, int dealer_total){
     if(player_total > 21){
-        cout << "OH NO! Your total went over 21! BUST!\nDealer wins!";
+        cout << "OH NO! Your total went over 21! BUST!\nDealer wins!\n";
     }
     else{
         int player_diff = 21 - player_total;

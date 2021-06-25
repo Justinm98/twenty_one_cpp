@@ -63,7 +63,7 @@ int Card::get_value(){
  */ 
 void Card::print_card_value(){
     string card_value = to_string(value);
-    string name = rank + " of " + suit + "'s\nValue: " + card_value + "\n";
+    string name = rank + " of " + suit + "s\nValue: " + card_value + "\n";
     cout << name;
 }
 
@@ -186,6 +186,6 @@ Card* Deck::deal_card(){
         Card *card_to_deal = card_deck.pop_front();
         return card_to_deal;
     }
-    cout << "NULL\n";
+
     return NULL;
 }
