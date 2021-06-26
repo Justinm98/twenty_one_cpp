@@ -166,6 +166,8 @@ void Deck::make_new_deck(){
         }   //end inner loop
     }   //end out loop
     
+    srand(time(0));
+
     //shuffle deck
     random_shuffle(begin(temp_deck), end(temp_deck));
 
